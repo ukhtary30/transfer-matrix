@@ -13,6 +13,16 @@ The matching matrix between medium n<sub>i+1</sub> and n<sub>i</sub> is given by
     B = 1 - x / y
     return 0.5 * np.array([[A,B],[B,A]])
 
+In the presence of graphene between the two media, the matching matrix is modified as,
+
+    def MG(x,y,z): #x is n_i+1, y is n_i, z is the conductivity
+    k = 2 * np.pi * y / (lmbd)
+    A = 1 + x / y + k * z / (omega * eps0 * y * y)
+    B = 1 - x / y + k * z / (omega * eps0 * y * y)
+    C = 1 - x / y - k * z / (omega * eps0 * y * y)
+    D = 1 + x / y - k * z / (omega * eps0 * y * y)
+    return 0.5 * np.array([[A,B],[C,D]])
+
 The propagation matrix in medium n<sub>i</sub> is given by the following code,
 
     def P(x,d): # x is the n_i, d is the thickness
@@ -20,6 +30,22 @@ The propagation matrix in medium n<sub>i</sub> is given by the following code,
     A = 1j * k * d
     return np.array([[np.exp(-A),0],[0,np.exp(A)]])
     
+    
 In the paper, the thickness of each medium is the quarter of the wavelenght in the medium.
 
 
+
+The transfer matrix of the mirror geometry with s repetition is given by the following code,
+
+    def TF(x,s): # x is the alpha and s is the repetition
+    na = x * nb
+    d1 = lmbd / (4 * na)
+    d2 = lmbd / (4 * nb)
+    J1 = M(na,1)  @ P(na,d1) @ M(nb,na) @ P(nb,d2)
+    J2 = M(na,nb) @ P(na,d1) @ M(nb,na) @ P(nb,d2)
+    J3 = P(nb,d2) @ M(na,nb) @ P(na,d1) @ M(nb,na)
+    J4 = P(nb,d2) @ M(na,nb) @ P(na,d1) @ M(1,na)
+    JT = J1 @ matrix_power(J2,s-1) @ MG(nb,nb,sig) @ matrix_power(J3,s-1) @ J4
+    return JT
+    
+    
