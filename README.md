@@ -23,6 +23,8 @@ In the presence of graphene between the two media, the matching matrix is modifi
     D = 1 + x / y - k * z / (omega * eps0 * y * y)
     return 0.5 * np.array([[A,B],[C,D]])
 
+where we add additional term consisting of conductivity of graphene in each componenent of the matrix.
+
 The propagation matrix in medium n<sub>i</sub> is given by the following code,
 
     def P(x,d): # x is the n_i, d is the thickness
