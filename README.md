@@ -27,6 +27,10 @@ In the presence of graphene between the two media, the matching matrix is modifi
     D = 1 + x / y - k * z / (omega * eps0 * y * y)
     return 0.5 * np.array([[A,B],[C,D]])
 
+which gives,
+
+<img width="516" alt="Screen Shot 2021-07-27 at 10 00 13" src="https://user-images.githubusercontent.com/87349156/127078330-1d0e0065-b10f-49ac-bfe7-8eaae9fc93e8.png">
+
 where we add additional term consisting of conductivity of graphene in each componenent of the matrix.
 
 The propagation matrix in medium n<sub>i</sub> is given by the following code,
@@ -35,10 +39,12 @@ The propagation matrix in medium n<sub>i</sub> is given by the following code,
     k = 2 * np.pi * x / (lmbd)
     A = 1j * k * d
     return np.array([[np.exp(-A),0],[0,np.exp(A)]])
-    
-    
-In the paper, the thickness of each medium is the quarter of the wavelenght in the medium.
-
+ 
+ which gives the propagation matrix in medium n<sub>i</sub>, 
+ 
+ <img width="240" alt="Screen Shot 2021-07-27 at 10 02 13" src="https://user-images.githubusercontent.com/87349156/127078478-52287170-02d4-4f5c-ad12-16f9df346871.png">
+ 
+In the paper, the thickness of each medium (d<sub>i</sub>) is the quarter of the wavelenght in the medium.
 
 
 The transfer matrix of the mirror geometry with s repetition is given by the following code,
