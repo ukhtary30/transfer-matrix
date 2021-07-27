@@ -13,6 +13,10 @@ The matching matrix between medium n<sub>i+1</sub> and n<sub>i</sub> is given by
     B = 1 - x / y
     return 0.5 * np.array([[A,B],[B,A]])
 
+which gives the following matching matrix M<sub>i</sub>,
+
+<img width="360" alt="Screen Shot 2021-07-27 at 9 55 36" src="https://user-images.githubusercontent.com/87349156/127078053-95a2074f-e276-4b88-8ea1-ccfe5e9ce04b.png">
+
 In the presence of graphene between the two media, the matching matrix is modified as,
 
     def MG(x,y,z): #x is n_i+1, y is n_i, z is the conductivity
