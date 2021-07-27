@@ -80,4 +80,15 @@ The code,
 
 gives the input for the refractive index of medium B.
 
+The following code gives the input for the umber of repetitions that will be calculated.
 
+    ##########################################
+    # The input for the number of repetitions that will be calculated.
+
+    s1 = 2
+    s2 = 3
+    s3 = 5
+
+    ##########################################
+  
+    
