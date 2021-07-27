@@ -93,5 +93,49 @@ The following code gives the input for the umber of repetitions that will be cal
   
  The outputs are plotted by the following code,
  
- 
+```
+nd = 100 # number of data
+AB1 = np.zeros(nd+1) # the data for absorption in percent for s1
+EE1 = np.zeros(nd+1) # the data for electric field for s1
+AB2 = np.zeros(nd+1) # the data for absorption in percent for s2
+EE2 = np.zeros(nd+1) # the data for electric field for s2
+AB3 = np.zeros(nd+1) # the data for absorption in percent for s3
+EE3 = np.zeros(nd+1) # the data for electric field for s3
+AA = np.zeros(nd+1) # the data for alpha
+
+for i in range (nd+1):
+    AA[i]    = (6 - 1 ) * i/nd + 1
+    AB1[i]    = ap(AA[i],s1) * 100
+    EE1[i]    = ec(AA[i],s1)
+    AB2[i]    = ap(AA[i],s2) * 100
+    EE2[i]    = ec(AA[i],s2)
+    AB3[i]    = ap(AA[i],s3) * 100
+    EE3[i]    = ec(AA[i],s3)
+
+# absorption as a function of alpha
+    
+plt.plot( AA, AB1, 'k',label='s = 2')
+plt.plot( AA, AB2, 'r',label='s = 3')
+plt.plot( AA, AB3, 'g',label='s = 5')
+plt.tick_params( labelsize  = 18 )
+plt.ylabel('Absorption [%]',size  = 18)
+plt.xlabel('α',size  = 18)
+plt.xlim([1,6])
+plt.ylim([0,50])
+plt.legend()
+plt.show()
+
+# electric field as a function of alpha
+
+plt.plot( AA, EE1, 'k',label='s = 2'  )
+plt.plot( AA, EE2, 'r',label='s = 3')
+plt.plot( AA, EE3, 'g',label='s = 5')
+plt.tick_params( labelsize  = 18 )
+plt.ylabel('|E/$E_0$| ',size  = 18)
+plt.xlabel('α',size  = 18)
+plt.xlim([1,6])
+plt.ylim([0,5])
+plt.legend()
+plt.show()
+```
      
