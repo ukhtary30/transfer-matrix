@@ -60,6 +60,6 @@ The transfer matrix of the mirror geometry with s repetition is given by the fol
     JT = J1 @ matrix_power(J2,s-1) @ MG(nb,nb,sig) @ matrix_power(J3,s-1) @ J4
     return JT
     
-The matrix J1 corresponds to the propagation of light when entering the mirror geometry from air to medium A and B (air --> AB). Similarly, matrix J4 corresponds to the  propagation of light leaving the geometry from medium B and to air (BA -->  air). 
+The matrix J1 corresponds to the propagation of light when entering the mirror geometry from air to medium A and B (air --> AB). Similarly, matrix J4 corresponds to the  propagation of light leaving the geometry from medium B and to air (BA -->  air). It is noted that the command @ generates the matrix multiplication.
 
 Matrix matrix_power(J2,s-1) corresponds to the propagation of light through repeated medium AB before reaching the graphene. On the other hand, matrix matrix_power(J3,s-1) corresponds to the propagation of light through repeated medium BA after reaching the graphene. The command matrix_power(J2,s-1) generates the power of matrix J2 with order of s-1. 
