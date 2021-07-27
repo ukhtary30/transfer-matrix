@@ -61,3 +61,5 @@ The transfer matrix of the mirror geometry with s repetition is given by the fol
     return JT
     
 The matrix J1 corresponds to the propagation of light when entering the mirror geometry from air to medium A and B (air --> AB). Similarly, matrix J4 corresponds to the  propagation of light leaving the geometry from medium B and to air (BA -->  air). 
+
+Matrix J2 corresponds to the propagation of light through repeated medium AB before reaching the graphene. On the other hand, matrix J3 corresponds to the propagation of light through repeated medium BA after reaching the graphene.
