@@ -72,4 +72,12 @@ Matrix matrix_power(J2,s-1) corresponds to the propagation of light through repe
 
 ### The output of the code
 
+By inputting the number of repetition and the value of the refractive index of medium B, the absorption and electric field on graphene are calculated as a function of α.
+
+The code, 
+
+    nb   = 1.5 # the refractive index of B medium
+
+gives the input for the refractive index of medium B.
+
 
