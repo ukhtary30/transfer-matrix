@@ -7,6 +7,7 @@ The summary of this paper is given by the following link of my webpages: [Cerita
 ---
 
 ### The explanation of the code
+The code: TF.ipynb
 
 The main unit of the program is the calculation of the absorption probability and electric field by using transfer matrix, which consists of the product between matching and propagation matrices.
 
