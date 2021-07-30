@@ -92,7 +92,7 @@ The following code gives the input for the umber of repetitions that will be cal
 
     ##########################################
   
- The outputs are plotted by the following code,
+ The outputs are plotted by the following code (Figures 3a and b in the paper),
  
 ```
 nd = 100 # number of data
@@ -140,3 +140,44 @@ plt.legend()
 plt.show()
 ```
      
+The derivation of the analytical solutions for the absorption and electric field are given in the supplemental material of the paper. For the α that gives the maximum absorption is obtained by taking the derivative of the analytical solution of the absorption. The derivative is given by the SymPy code as follows:
+
+```
+#################################################
+
+# The derivation of the analytical results is given in the supplemental material of the paper. Here we will plot the value of alpha that gives the maximum absorption as a function of s
+
+
+# Let us use sympy
+
+import sympy
+sympy.init_session()
+s, al, Z0, sigm = symbols("s alpha Z0 sigma")
+
+A = 4 * al**(2*s)* Z0 * sigm / (2 + al**(2*s) *Z0 * sigm)**2 # the analytical formula for Absorption
+B = diff(A,al) # derivative of A
+amax = solve(B,al)[0] # the analytical solution of alpha that gives maximum absorption
+
+```
+The analytical solution of the alpha is given by the command amax. This command yields,
+
+<img width="137" alt="Screen Shot 2021-07-30 at 13 23 11" src="https://user-images.githubusercontent.com/87349156/127599902-d362cbcf-ee9d-4041-9639-39e91d79c1f5.png">
+
+The plot of the alpha as a function of s is given by the following code,
+
+```
+##### Ploting the amax
+f=lambdify(s,amax.subs([(Z0,377),(sigm,sig)]))
+xx = np.linspace(2,12,100)
+yy = f(xx)
+plt.plot( xx,yy)
+plt.tick_params( labelsize  = 18 )
+plt.ylabel('$α_{max}$',size  = 18)
+plt.xlabel('s',size  = 18)
+plt.xlim([2,12])
+plt.ylim([1,3.5])
+plt.show()
+```
+The output is a plot of α<sub>i</sub> as a function of s (Figure 3c in the paper).
+
+
